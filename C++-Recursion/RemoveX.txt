@@ -1,0 +1,35 @@
+ // Change in the given string itself. So no need to return or print the changed string.
+#include<iostream>
+#include<string.h>
+using namespace std;
+void helper(char S[],int si)
+{
+     int l=strlen(S);
+     int i=0;
+    if(S[si]=='\0')
+    {
+        return ;
+    }
+     else
+     {
+         if(S[si]=='x')
+       {
+          for(i=si;S[i]!='\0';i++)
+         {
+             S[i]=S[i+1];
+         }
+         //S[si+1]='*';
+         S[i]='\0';
+         helper(S,si);
+       }
+       else
+       {
+           helper(S,si+1);
+       }
+     }
+    
+}
+void removeX(char S[])
+{
+ helper(S,0);
+}

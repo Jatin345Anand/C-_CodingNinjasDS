@@ -1,0 +1,34 @@
+
+int countZeros(int n) 
+{
+    int sum=0,sum1=0,sum2=0;
+    if(n<10)
+    {
+        if(n!=0)
+        {
+            sum=sum+0;
+        return sum;
+        }
+        else if(n==0)
+        {
+            sum=sum+1;
+        return sum;
+        }
+    }
+    else 
+    {
+        int rem=n%10;
+        if(rem==0)
+        {
+            sum2=sum2+1;
+        
+        }
+        sum1= sum2+countZeros(n/10);
+        return sum1;
+        
+    }
+    
+
+}
+
+

@@ -1,0 +1,47 @@
+ 
+#include<iostream>
+using namespace std;
+int rows=0,sum=0;
+void func( int input[],int arr[],int i,int j,int n,int k)
+{
+    if(j==n)
+    {
+        if( sum==k)
+    {
+       // output[rows][0]=i;
+        for(int k=0;k<i;k++)
+        {
+            cout<<arr[k]<<" ";
+        }
+        //output[rows][i]='\0';
+        cout<<"\n";
+        rows++;
+        return ;
+    }
+    return ;
+    }
+    
+    arr[i]=input[j];
+    sum=sum+arr[i];
+func(input,arr,i+1,j+1,n,k);
+    sum=sum-arr[i];
+func(input,arr,i,j+1,n,k);
+
+}
+void  printSubsetSumToK(int input[], int n, int k)
+{
+int  arr[50],i;
+func(input,arr,0,0,n,k);
+/*for(i=0;i<rows;i++)
+{
+    cout<<arr[i]<<"\n";
+}*/
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+
+public class solution {
+	
+	public static String[] permutationOfString(String input)
+    {
+		if(input.length()==0)
+        {
+          String[] ans = {""};
+          return ans;
+        }
+         String[] smallans= permutationOfString(input.substring(1));
+         String[] ans= new String[(smallans.length*(smallans[0].length()+1))];
+         
+         int k=0,i,j;
+        for(i=0;i< smallans.length;i++)
+        {
+          String cs= smallans[i];
+          for(j=0;j<=smallans[0].length();j++)
+          {
+            ans[k++]=cs.substring(0,j)+input.charAt(0)+cs.substring(j);
+          }
+        }
+		return ans;
+	}
+	
+}
+
+// CPLUSPLUS
+
+#include<iostream>
+#include<string.h>
+using namespace std;
+void swap(char *a,char *b)
+{
+    char temp;
+    temp=*b;
+    *b=*a;
+    *a=temp;
+}
+int rows=0;
+void helper(char *str,char S[][50], int si, int ei)
+ {
+ 
+ 
+ if(si==ei)
+ {
+     for(int i=0;i<ei;i++)
+     {
+         S[rows][i]=str[i];
+     }
+      S[rows][ei]='\0';
+      rows++;
+     return ; 
+ }
+  for(int j=si;j<ei;j++)
+  {
+    swap(&str[si],&str[j]);
+    helper(str,S,si+1,ei);
+    swap(&str[si],&str[j]);
+  }
+ 
+}
+int permutations(char str[], char S[][50])  
+ {
+ //char str[20];
+int l;
+//cout<<"Enter the striing \n";
+ //cin>>str;
+ //cout<<"Permutation is\n";
+ char temp[50];
+ l=strlen(str);
+// void perm(char * , int , int );
+helper(str,S,0,l);
+return rows;
+ }
+
+
+

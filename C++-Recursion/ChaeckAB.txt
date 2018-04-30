@@ -1,0 +1,134 @@
+/* #include<iostream>
+#include<string.h>
+using namespace std;
+bool helper(char S[],int si,int ei,int l)
+{
+    bool flag;
+    if(l==0)
+    {
+        return 0;
+    }
+    else if(l==1)
+    {
+       if(S[si]=='a')
+       {
+         return true;
+       }
+       else
+       {
+         return false;
+       }
+    }
+    else if(l==2)
+    {
+        if(S[si]=='a' && S[si+1]=='a')
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else if(l==3)
+    {
+        if(S[si]=='a')
+        {
+            if(S[si+1]=='b')
+            {
+                if(S[si+2]=='b')
+               {
+                return true;
+               }
+            }
+        }
+        else if(S[si]=='a')
+        {
+            if(S[si+1]=='a')
+            {
+                if(S[si+2]=='a')
+                {
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else// (l>3)
+    {
+        if(S[ei]=='b')
+        {
+            if(S[ei-1]=='b')
+            {
+                helper(S,si,ei,l-2);
+            }
+            else if(S[ei-1]!='b') 
+            {
+                return false;
+            }
+
+        }
+        else if(S[ei]=='a')
+        {
+            helper(S,si,ei,l-1);
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+bool checkAB(char S[])
+{
+int l=strlen(S);
+helper(S,0,l-1,l);
+}
+*/
+int i=0;
+bool checkAB(char S[])
+{
+    if(S[i]=='\0')
+    {
+        return true;
+    }
+    if(S[i]=='a')
+    {
+        i++;
+         checkAB(S);
+    }
+    else if(S[i]=='b' && S[i+1]=='b')
+    {
+        i=i+2;
+         checkAB(S);
+        
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

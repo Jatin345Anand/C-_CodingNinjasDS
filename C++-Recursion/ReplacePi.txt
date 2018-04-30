@@ -1,0 +1,36 @@
+ // Change in the given string itself. So no need to return or print the changed string.
+#include<iostream>
+#include<string.h>
+using namespace std;
+void helper(char S[],int si)
+{
+    if(S[si]=='\0')
+    {
+        return ;
+    }
+     else
+     {
+         if(S[si]=='p' && S[si+1]=='i')
+       {
+        int l=strlen(S);
+         for(int i=l+4;i>si;i--)
+         {
+             S[i]=S[i-2];
+         }
+         S[si]='3';
+         S[si+1]='.';
+         S[si+2]='1';
+         S[si+3]='4';
+         helper(S,si+2);
+       }
+       else
+       {
+           helper(S,si+1);
+       }
+     }
+    
+}
+void replacePi(char S[])
+{
+ helper(S,0);
+}

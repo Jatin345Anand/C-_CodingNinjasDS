@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+
+void func(char input[],char arr[],int i,int j)
+{
+    if(input[j]=='\0')
+    {
+        for(int k=0;k<i;k++)
+        {
+           cout<<arr[k];
+        }
+        cout<<endl;
+        return ;
+    }
+    arr[i]=input[j];
+  func(input,arr,i+1,j+1);
+  func(input,arr,i,j+1);
+}
+
+void printSubsequences(char input[])
+{
+ char arr[50];
+ func(input,arr,0,0);
+    
+}

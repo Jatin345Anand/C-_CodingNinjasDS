@@ -1,0 +1,42 @@
+ 
+#include<iostream>
+using namespace std;
+int rows=0;
+void func( int input[],int arr[],int i,int j,int n)
+{
+    if(j==n)
+    {
+     //   output[rows][0]=i;
+        for(int k=0;k<i;k++)
+        {
+//            output[rows][k+1]=arr[k];
+           cout<<arr[k]<<" ";
+        }
+        //output[rows][i]='\0';
+        cout<<"\n";
+        rows++;
+        return ;
+    }
+    
+    
+    
+    arr[i]=input[j];
+func(input,arr,i+1,j+1,n);
+
+func(input,arr,i,j+1,n);
+
+}
+void printSubsetsOfArray(int input[], int n) 
+{
+int  arr[50];
+func(input,arr,0,0,n);
+//return rows;
+}
+
+
+
+
+
+
+
+

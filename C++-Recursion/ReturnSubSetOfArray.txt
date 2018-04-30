@@ -1,0 +1,106 @@
+public class solution {
+ 
+  public static int[][] helpersubset(int[][] SmallAns,int[] Input){
+		 int Firstelement = Input[0];
+		 int i,j;
+		 int[][] RealAns = new int[SmallAns.length*2][];
+		 for(i=0;i<SmallAns.length;i++)
+		 {
+			 RealAns[i]= new int[SmallAns[i].length];
+			 for(j=0;j<SmallAns[i].length;j++)
+			 {
+				 RealAns[i][j]=SmallAns[i][j];
+			 }
+		 }
+		 for(i=SmallAns.length;i<RealAns.length;i++)
+		 {
+			 RealAns[i][0]=Firstelement;
+			 for(j=0;j<SmallAns[i-SmallAns.length].length;j++)
+			 {
+				 RealAns[i][j+1]=SmallAns[i-SmallAns.length][j];
+			 }
+		 }
+		 return RealAns;
+	 }
+	 public static int[] helperSubsetofArray(int[] ComplexInput,int index){
+		 if(ComplexInput.length==1)
+		 {
+			 int[] ans = {};
+			 return ans;
+		 }
+		 int[] ans = new int[ComplexInput.length-index];
+		 for(int i=index;i< ComplexInput.length;i++)
+		 {
+			 ans[i-index] = ComplexInput[i];
+		 }
+		 return ans;
+	 } 
+	public static int[][] subsets(int[] input){
+		if(input.length==0)
+		{
+			int[][] ans = {{}};
+			return ans;
+		}
+		int[] Smallans = helperSubsetofArray(input,1);
+		int[][] smallans = SubsetOfArray(Smallans);
+		int[][] ans = helpersubset(smallans,input);
+		return ans;
+	 }
+	
+}
+
+
+// CPLUSPLUS
+
+/***
+You need to save all the subsets in the given 2D output array. And return the number of subsets(i.e. number of rows filled in output) from the given function.
+
+In ith row of output array, 1st column contains length of the ith subset. And from 1st column actual subset follows.
+For eg. Input : {1, 2}, then output should contain 
+	{{0}, 		// Length of this subset is 0
+	{1, 2},		// Length of this subset is 1
+	{1, 1},		// Length of this subset is also 1
+	{2, 1, 2}}	// Length of this subset is 2
+
+Don’t print the subsets, just save them in output.
+***/
+ 
+#include<iostream>
+using namespace std;
+int rows=0;
+void func( int input[],int arr[],int output[][20],int i,int j,int n)
+{
+    if(j==n)
+    {
+        output[rows][0]=i;
+        for(int k=0;k<i;k++)
+        {
+            output[rows][k+1]=arr[k];
+        }
+        //output[rows][i]='\0';
+        rows++;
+        return ;
+    }
+    
+    
+    
+    arr[i]=input[j];
+func(input,arr,output,i+1,j+1,n);
+
+func(input,arr,output,i,j+1,n);
+
+}
+int subset(int input[], int n, int output[][20])
+{
+int  arr[50];
+func(input,arr,output,0,0,n);
+return rows;
+}
+
+
+
+
+
+
+
+

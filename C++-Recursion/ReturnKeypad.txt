@@ -1,0 +1,135 @@
+
+/***
+You need to save all the strings in the given 2D output array. And return the number of strings(i.e. number of rows filled in output) from the given function.
+
+Don’t print the strings, just save them in output.
+***/
+
+#include<iostream>
+using namespace std;
+
+char temp[100];
+char arr1[]="";
+char arr2[]="abc";
+char arr3[]="def";
+char arr4[]="ghi";
+char arr5[]="jkl";
+char arr6[]="mno";
+char arr7[]="pqrs";
+char arr8[]="tuv";
+char arr9[]="wxyz";
+char arr0[]="";
+
+char* address(int i)
+{
+
+    switch(i)
+    {
+    case 0:
+        return arr0;
+    case 1:
+        return arr1;
+    case 2:
+        return arr2;
+    case 3:
+        return arr3;
+    case 4:
+        return arr4;
+    case 5:
+        return arr5;
+    case 6:
+        return arr6;
+    case 7:
+        return arr7;
+    case 8:
+        return arr8;
+    case 9:
+        return arr9;
+    }
+}
+int rowno=0;
+int keyPad(int n, char output[][100],int callno=0)
+{
+if(n==0)
+{
+    int i=0;
+    while(i<callno)
+    {
+        output[rowno][i]=temp[callno-1-i];
+        i++;
+    }
+    output[rowno][i]='\0';
+    rowno++;
+}
+char * p=address(n%10);
+for(int i=0;*(p+i)!='\0';i++)
+{
+
+    temp[callno]=*(p+i);
+    keyPad(n/10,output,callno+1);
+
+}
+return rowno;
+}
+/*int keyPad(int n, char output[][100]) 
+{
+ 
+}
+*/
+
+
+
+
+
+
+
+
+/// JAVA
+public class solution {
+
+	// Return a string array that contains all the possible strings
+	 
+	public static String getcode(int n)
+	{
+		String[] srt = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+	String ans =srt[n];	
+      return ans;
+	}
+    public static String[] Keypad(int n){
+    	if(n==0 || n==1)
+    	{
+    		String[] ans={""};
+    		return ans;
+    	}
+    	String ans = getcode(n%10);
+    	String[] smallans = Keypad(n/10);
+    	/*String[] ansreal = new String[(smallans.length)*ans.length()];
+    	int k=0,i,j,l;
+    	for( i=0;i<smallans.length;i++)
+    	{
+    		String CurrentString = smallans[i];
+    		for(j=0;j<ans.length();j++)
+    		{
+    			for(l=0;l<CurrentString.length();l++)
+    			{
+    				ansreal[k++]=CurrentString.charAt(l)+ans.charAt(j);	
+    			}
+    		}
+    	}*/
+       String[] RealAns = helperkeypad(smallans,ans);     
+    	return RealAns;
+    }
+  public static String[] helperkeypad(String[] SmallAns,String Ans){
+    String[] realans = new String[SmallAns.length*Ans.length()];
+    int k=0;
+    int i,j;
+    for(i=0;i<SmallAns.length;i++)
+    {
+      for(j=0;j<Ans.length();j++)
+      {
+        realans[k++]=SmallAns[i]+Ans.charAt(j);
+      }
+    }
+    return realans;
+  }
+}

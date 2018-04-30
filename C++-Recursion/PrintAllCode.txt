@@ -1,0 +1,254 @@
+/*
+#include<iostream>
+using namespace std;
+int funcconvert(char S[])
+{
+int i = atoi(S);
+return i;
+}
+void func(int n,int i,int temp[])
+{
+    char x;
+    if(n==0)
+    {
+        for(int k=i-1;k>=0;k--)
+        {
+            if(temp[k]<26)
+            {
+            x=temp[k]+96;
+            cout<<x;
+            }
+        }
+        cout<<endl;
+        return ;
+    }
+
+    temp[i]=n%10;
+    func(n/10,i+1,temp);
+    if(n%100>9){
+        temp[i]=n%100;
+        func(n/100,i+1,temp);
+    }
+
+
+}
+void printAllPossibleCodes(char S[]) 
+{
+    int temp[100];
+    int n;
+    n=funcconvert(S);
+    func(n,0,temp);
+}
+*/
+#include<cstring>
+#include<cmath>
+int intconverter(char arr[])
+{
+   int sum=0,i=0;
+   int a=strlen(arr)-1;
+   while(a>=0)
+   {
+       sum=sum+((arr[a]-'0')*pow(10,i));
+       i++;
+       a--;
+   }
+    return sum;
+}
+
+void func(int number,char arr[],int i)
+{
+    if(number==0)
+    {
+        for(int j=i-1;j>=0;j--)
+        {
+            cout<<arr[j];
+        }
+
+        cout<<endl;
+        return ;
+    }
+    if((number%10)>=1)
+{
+switch(number%10)
+{
+case 1:
+    arr[i]='a';
+        break;
+case 2:
+    arr[i]='b';
+        break;
+case 3:
+    arr[i]='c';
+        break;
+case 4:
+    arr[i]='d';
+        break;
+case 5:
+    arr[i]='e';
+        break;
+case 6:
+    arr[i]='f';
+        break;
+case 7:
+    arr[i]='g';
+        break;
+case 8:
+    arr[i]='h';
+        break;
+case 9:
+    arr[i]='i';
+        break;
+case 10:
+    arr[i]='j';
+        break;
+case 11:
+    arr[i]='k';
+        break;
+case 12:
+    arr[i]='l';
+        break;
+case 13:
+    arr[i]='m';
+        break;
+case 14:
+    arr[i]='n';
+        break;
+case 15:
+    arr[i]='o';
+        break;
+case 16:
+    arr[i]='p';
+        break;
+case 17:
+    arr[i]='q';
+        break;
+case 18:
+    arr[i]='r';
+        break;
+case 19:
+    arr[i]='s';
+        break;
+case 20:
+    arr[i]='t';
+        break;
+case 21:
+    arr[i]='u';
+        break;
+case 22:
+    arr[i]='v';
+        break;
+case 23:
+    arr[i]='w';
+        break;
+case 24:
+    arr[i]='x';
+        break;
+case 25:
+    arr[i]='y';
+        break;
+case 26:
+    arr[i]='z';
+        break;
+
+}
+    func(number/10,arr,i+1);
+
+}
+if((number%100)>=10&&(number%100)<=26)
+{
+    switch(number%100)
+{
+case 1:
+    arr[i]='a';
+        break;
+case 2:
+    arr[i]='b';
+        break;
+case 3:
+    arr[i]='c';
+        break;
+case 4:
+    arr[i]='d';
+        break;
+case 5:
+    arr[i]='e';
+        break;
+case 6:
+    arr[i]='f';
+        break;
+case 7:
+    arr[i]='g';
+        break;
+case 8:
+    arr[i]='h';
+        break;
+case 9:
+    arr[i]='i';
+        break;
+case 10:
+    arr[i]='j';
+        break;
+case 11:
+    arr[i]='k';
+        break;
+case 12:
+    arr[i]='l';
+        break;
+case 13:
+    arr[i]='m';
+        break;
+case 14:
+    arr[i]='n';
+        break;
+case 15:
+    arr[i]='o';
+        break;
+case 16:
+    arr[i]='p';
+        break;
+case 17:
+    arr[i]='q';
+        break;
+case 18:
+    arr[i]='r';
+        break;
+case 19:
+    arr[i]='s';
+        break;
+case 20:
+    arr[i]='t';
+        break;
+case 21:
+    arr[i]='u';
+        break;
+case 22:
+    arr[i]='v';
+        break;
+case 23:
+    arr[i]='w';
+        break;
+case 24:
+    arr[i]='x';
+        break;
+case 25:
+    arr[i]='y';
+        break;
+case 26:
+    arr[i]='z';
+        break;
+}
+    func(number/100,arr,i+1);
+}
+}
+void printAllPossibleCodes(char input[]) {
+    char arr[100];
+    int number=intconverter(input);
+    func(number,arr,0);
+}
+
+
+
+
+
+
+

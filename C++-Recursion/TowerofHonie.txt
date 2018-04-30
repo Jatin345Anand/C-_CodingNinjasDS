@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+int towerOfHanoi(int n, char source, char auxiliary, char destination) 
+{
+ if(n==0)
+ {
+     return 0;
+ }
+ else if(n==1)
+ {
+     return 1;
+ }
+ else
+ {
+     int output=towerOfHanoi(n-1,source,destination,auxiliary);
+     int output1=1+output+towerOfHanoi(n-1,auxiliary,source,destination);
+     return output1;
+ }
+ 
+ 
+ 
+ 
+} 

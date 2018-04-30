@@ -1,0 +1,28 @@
+ #include<iostream>
+#include<string.h>
+using namespace std;
+bool helper(char S[],int si,int ei)
+{
+  if(si>ei)
+  {
+      return true;
+  }
+  
+  else if(S[si]!=S[ei])
+  {
+      return false;
+  }
+   
+  else
+  {
+      bool output =helper(S,si+1,ei-1);
+      return output; 
+  }
+    
+}
+
+bool checkPalindrome(char S[]) 
+{
+ int l=strlen(S);
+  return helper(S,0,l-1);
+ }

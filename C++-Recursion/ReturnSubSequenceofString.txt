@@ -1,0 +1,35 @@
+/***
+You need to save all the subsequences in the given 2D output array. And return the number of subsequences(i.e. number of rows filled in output) from the given function.
+
+Dont print the subsequences, just save them in output.
+***/
+
+int helper(char S[],int si, char T[][50])
+{
+if(S[si]=='\0')
+    {
+        T[0][0]='\0';
+        return 1;
+    }
+    int smallOutputSize=helper(S,si+1,T);
+    {
+        int i=0,Outrow,j;
+        for(;i<smallOutputSize;i++)
+        {
+            Outrow=i+smallOutputSize;
+            T[Outrow][0]=S[si];
+            j=0;
+            for(;T[i][j]!='\0';j++)
+            T[Outrow][j+1]=T[i][j];
+        }
+        T[Outrow][j+1]='\0';
+       }
+       return smallOutputSize*2;	// Write your code here
+
+}
+int subSequences(char S[],char T[][50])
+{
+    helper(S,0,T);
+}
+
+

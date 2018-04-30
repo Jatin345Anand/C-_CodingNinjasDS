@@ -1,0 +1,65 @@
+void merge(int input[], int b[], int c[], int size1, int size2){
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	while(i < size1 && j < size2)
+	{
+		if(b[i] < c[j])
+		{
+			input[k] = b[i];
+			i++;
+		}
+		else
+		{
+			input[k] = c[j];
+			j++;
+		}
+		k++;
+	}
+
+	while(i < size1)
+	{
+		input[k] = b[i];
+		i++;
+		k++;
+	}
+
+	while(j < size2)
+	{
+		input[k] = c[j];
+		j++;
+		k++;
+	}
+
+}
+void mergeSortHelper(int input[], int size){
+	
+	if(size <= 1)
+		return;
+
+	int n1 = size /2;
+	int b[n1];
+	int n2 = size - n1;
+	int c[n2];
+
+	int k = 0;
+	for(int i = 0; i < n1; i++){
+		b[i] = input[k];
+		k++;
+	}
+
+	for(int i = 0; i < n2; i++){
+		c[i] = input[k];
+		k++;
+	}
+
+	mergeSortHelper(b, n1);
+	mergeSortHelper(c, n2);
+
+	merge(input, b,c, n1, n2);
+}
+
+void mergeSort(int input[], int size)
+{
+     mergeSortHelper(input, size);       
+}
